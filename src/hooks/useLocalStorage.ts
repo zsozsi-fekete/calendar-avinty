@@ -7,7 +7,7 @@ export function useLocalStorage(key: string) {
     try {
       const item = localStorage.getItem(key);
       if (item) {
-        setStoredValue(JSON.parse(item));
+        setStoredValue(item);
       }
     } catch (error) {
       console.log(error);
@@ -17,11 +17,11 @@ export function useLocalStorage(key: string) {
   const setValue = (value: string) => {
     try {
       setStoredValue(value);
-      localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, value);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return [storedValue, setValue];
+  return [storedValue, setValue] as const;
 }
