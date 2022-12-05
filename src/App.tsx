@@ -1,7 +1,7 @@
 import styles from "./App.module.css";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { OPEN_WEATHER_MAP_API_KEY } from "./utils/constants";
-import { ApiKeyInputView } from "./views/ApiKeyInputView";
+import ApiKeyFormView from "./views/ApiKeyFormView";
 import { CalendarView } from "./views/CalendarView";
 
 function App() {
@@ -9,7 +9,11 @@ function App() {
 
   return (
     <div className={styles.App}>
-      {apiKey ? <CalendarView /> : <ApiKeyInputView setApiKey={setApiKey} />}
+      {apiKey ? (
+        <CalendarView />
+      ) : (
+        <ApiKeyFormView setToLocalStorage={setApiKey} />
+      )}
     </div>
   );
 }
