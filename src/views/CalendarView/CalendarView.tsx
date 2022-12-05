@@ -1,3 +1,5 @@
+import Calendar from "../../containers/Calendar";
+import { DateProvider } from "../../providers/DateProvider";
 import styles from "./CalendarView.module.css";
 
 export function CalendarView({
@@ -8,13 +10,15 @@ export function CalendarView({
   removeApiKey: () => void;
 }) {
   return (
-    <div className={styles.Container}>
-      <div className={styles.Header}>
-        Calendar: {apiKey}
-        <button onClick={removeApiKey}>Remove</button>
+    <DateProvider>
+      <div className={styles.Container}>
+        <div className={styles.Header}>
+          Calendar: {apiKey}
+          <button onClick={removeApiKey}>Remove</button>
+        </div>
+        <Calendar />
+        <div>WEATHER INFO</div>
       </div>
-      <div>CALENDAR COMPONENT</div>
-      <div>WEATHER INFO</div>
-    </div>
+    </DateProvider>
   );
 }
