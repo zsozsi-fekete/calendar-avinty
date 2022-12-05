@@ -10,4 +10,14 @@
 
 .Header {
   grid-column: 1 / -1;
+  font-size: 12px;
+}
+
+.Button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
 }

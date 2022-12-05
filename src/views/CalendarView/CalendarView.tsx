@@ -13,8 +13,10 @@ export function CalendarView({
     <DateProvider>
       <div className={styles.Container}>
         <div className={styles.Header}>
-          Calendar: {apiKey}
-          <button onClick={removeApiKey}>Remove</button>
+          {`Api Key: ${apiKey} `}
+          <button className={styles.Button} onClick={removeApiKey}>
+            Remove
+          </button>
         </div>
         <Calendar />
         <div>WEATHER INFO</div>
