@@ -5,12 +5,14 @@ import ApiKeyFormView from "./views/ApiKeyFormView";
 import { CalendarView } from "./views/CalendarView";
 
 function App() {
-  const [apiKey, setApiKey] = useLocalStorage(OPEN_WEATHER_MAP_API_KEY);
+  const [apiKey, setApiKey, removeApiKey] = useLocalStorage(
+    OPEN_WEATHER_MAP_API_KEY
+  );
 
   return (
     <div className={styles.App}>
       {apiKey ? (
-        <CalendarView />
+        <CalendarView apiKey={apiKey} removeApiKey={removeApiKey} />
       ) : (
         <ApiKeyFormView setToLocalStorage={setApiKey} />
       )}

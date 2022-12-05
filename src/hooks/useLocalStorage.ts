@@ -23,5 +23,14 @@ export function useLocalStorage(key: string) {
     }
   };
 
-  return [storedValue, setValue] as const;
+  const remove = () => {
+    try {
+      setStoredValue("");
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return [storedValue, setValue, remove] as const;
 }
