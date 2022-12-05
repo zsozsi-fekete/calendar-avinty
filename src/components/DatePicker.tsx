@@ -14,8 +14,8 @@ export function DatePicker({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DesktopDatePicker
-        label="Date desktop"
-        inputFormat="MM/DD/YYYY"
+        label="Select a date"
+        inputFormat="YYYY/MM/DD"
         value={value}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} />}

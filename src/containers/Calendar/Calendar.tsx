@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import { DateContext } from "../../providers/DateProvider";
 import CalendarHeader from "../CalendarHeader";
+import styles from "./Calendar.module.css";
 
 export function Calendar() {
-  const { date } = useContext(DateContext);
-
   return (
-    <div>
-      <div>{`Selected Date: ${date}`}</div>
+    <div className={styles.Container}>
       <CalendarHeader />
     </div>
   );
