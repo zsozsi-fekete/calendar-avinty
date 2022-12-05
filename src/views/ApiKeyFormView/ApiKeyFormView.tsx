@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "../../components/Card";
 import styles from "./ApiKeyFormView.module.css";
 
 export function ApiKeyFormView({
@@ -12,23 +13,25 @@ export function ApiKeyFormView({
     event.preventDefault();
     setToLocalStorage(apiKey);
   };
-
+  console.log("helo");
   return (
-    <form className={styles.Form} onSubmit={handleSubmit}>
-      <label className={styles.Label} htmlFor="api_key">
-        Please provide an OpenWeatherMap API Key
-      </label>
-      <input
-        id="api_key"
-        name="api_key"
-        className={styles.Input}
-        type="text"
-        value={apiKey}
-        onChange={(event) => setApiKey(event.target.value)}
-      />
-      <button type="submit" className={styles.Button}>
-        Save
-      </button>
-    </form>
+    <Card>
+      <form className={styles.Form} onSubmit={handleSubmit}>
+        <label className={styles.Label} htmlFor="api_key">
+          Please provide an OpenWeatherMap API Key
+        </label>
+        <input
+          id="api_key"
+          name="api_key"
+          className={styles.Input}
+          type="text"
+          value={apiKey}
+          onChange={(event) => setApiKey(event.target.value)}
+        />
+        <button type="submit" className={styles.Button}>
+          Save
+        </button>
+      </form>
+    </Card>
   );
 }

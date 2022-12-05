@@ -1,0 +1,11 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #dfe6e9;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 1px 1px 5px 1px #b2bec3;
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import React, { createContext, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 
 export const DateContext = createContext(
   {} as {
@@ -8,8 +8,8 @@ export const DateContext = createContext(
   }
 );
 
-export const DateProvider = ({ children }: { children: JSX.Element }) => {
-  const [date, setDate] = useState<Dayjs | null>(dayjs());
+export const DateProvider = ({ children }: { children: ReactNode }) => {
+  const [date, setDate] = useState<Dayjs | null>(dayjs("2021-07-26"));
 
   const value = {
     date,

@@ -1,10 +1,9 @@
 import styles from "./CalendarBody.module.css";
-import seedData from "../../utils/seedData.json";
 import { HOURS } from "../../utils/constants";
 import { CalendarHour } from "../../components/CalendarHour";
+import { CalendarEvents } from "../CalendarEvents/CalendarEvents";
 
 export function CalendarBody() {
-  console.log(seedData);
   return (
     <div className={styles.Container}>
       {HOURS.map((hour) => (
@@ -14,6 +13,7 @@ export function CalendarBody() {
           styles={{ Hour: styles.Hour, HourMark: styles.HourMark }}
         />
       ))}
+      <CalendarEvents />
     </div>
   );
 }
