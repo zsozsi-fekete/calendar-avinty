@@ -1,19 +1,20 @@
-import seedData from "../../utils/seedData.json";
-import { SeedData } from "../../shared/types";
+import seedData from "../utils/seedData.json";
+import { SeedData } from "../shared/types";
 import { useContext, useEffect } from "react";
-import { DateContext } from "../../providers/DateProvider";
-import { Event } from "../../shared/types";
+import { DateContext } from "../providers/DateProvider";
+import { Event } from "../shared/types";
 import {
   groupOverlappingEvents,
   positiveOrZero,
   sortEventsAscending,
   startsOrEndsOnDate,
-} from "../../utils/helpers";
-import styles from "./CalendarEvents.module.css";
+} from "../utils/helpers";
 import dayjs from "dayjs";
-import { CalendarEventWrapper } from "../CalendarEventWrapper";
+import { CalendarEventWrapper } from "./CalendarEventWrapper";
+import CalendarEvent from "../components/CalendarEvent";
+import CalendarEventsContainer from "../components/CalendarEventsContainer";
 
-export function CalendarEvents() {
+export function CalendarEventList() {
   const { date, setDate } = useContext(DateContext);
   const { events } = seedData as SeedData;
   const groupedEvents = events
@@ -43,9 +44,7 @@ export function CalendarEvents() {
         const startDate = dayjs(first.start);
         const startOffset = startDate.diff(date?.startOf("day"), "minutes");
         return (
-          <div
-            key={first.id}
-            className={styles.Container}
+          <CalendarEventsContainer
             style={{ top: `${positiveOrZero(startOffset)}px` }}
           >
             <CalendarEventWrapper event={first} selectedDate={startDate} />
@@ -56,9 +55,13 @@ export function CalendarEvents() {
               <CalendarEventWrapper event={third} selectedDate={startDate} />
             )}
             {rest.length > 0 && (
-              <div style={{ width: "10px" }}>{rest.length}</div>
+              <CalendarEvent
+                style={{ flex: "unset", height: "20px", padding: "0px 2px" }}
+                title={`+ ${rest.length}`}
+                description=""
+              />
             )}
-          </div>
+          </CalendarEventsContainer>
         );
       })}
     </>

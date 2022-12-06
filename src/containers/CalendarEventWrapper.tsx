@@ -18,10 +18,14 @@ export function CalendarEventWrapper({
     ? endDate.diff(startDate, "minutes")
     : startDate.endOf("day").diff(startDate, "minutes");
 
+  const title = `${startDate.format("HH:mm")} - ${endDate.format("HH:mm")}`;
+  const description = event.title;
   const style: React.CSSProperties = {
     top: `${positiveOrZero(startOffset)}px`,
     height: `${endOffset}px`,
   };
 
-  return <CalendarEvent title={event.id.toString()} style={style} />;
+  return (
+    <CalendarEvent title={title} description={description} style={style} />
+  );
 }

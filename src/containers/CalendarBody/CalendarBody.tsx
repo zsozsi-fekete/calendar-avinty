@@ -1,7 +1,7 @@
 import styles from "./CalendarBody.module.css";
 import { HOURS } from "../../utils/constants";
 import { CalendarHour } from "../../components/CalendarHour";
-import { CalendarEvents } from "../CalendarEvents/CalendarEvents";
+import { CalendarEventList } from "../CalendarEventList";
 
 export function CalendarBody() {
   return (
@@ -13,7 +13,7 @@ export function CalendarBody() {
           styles={{ Hour: styles.Hour, HourMark: styles.HourMark }}
         />
       ))}
-      <CalendarEvents />
+      <CalendarEventList />
     </div>
   );
 }
