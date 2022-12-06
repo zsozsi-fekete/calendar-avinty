@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { DatePicker } from "../components/DatePicker";
 import { DateContext } from "../providers/DateProvider";
 import {
   Arrow,
   CalendarHeaderContainer,
+  DatePicker,
 } from "../components/CalendarHeaderComponents";
 import { Direction } from "../shared/types";
 
@@ -16,9 +16,9 @@ export function CalendarHeader() {
 
   return (
     <CalendarHeaderContainer>
-      <Arrow direction={Direction.Left} onClick={changeDay} />
+      <Arrow direction={Direction.Left} onClick={changeDay(-1)} />
       <DatePicker value={date} handleChange={setDate} />
-      <Arrow direction={Direction.Right} onClick={changeDay} />
+      <Arrow direction={Direction.Right} onClick={changeDay(1)} />
     </CalendarHeaderContainer>
   );
 }

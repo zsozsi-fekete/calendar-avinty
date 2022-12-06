@@ -3,7 +3,7 @@ import {
   CalendarViewHeader,
 } from "../components/CalendarViewComponents";
 import Card from "../components/Card";
-import CalendarBody from "../containers/CalendarBody";
+import { CalendarBody } from "../containers/CalendarBody";
 import { CalendarHeader } from "../containers/CalendarHeader";
 import { DateProvider } from "../providers/DateProvider";
 

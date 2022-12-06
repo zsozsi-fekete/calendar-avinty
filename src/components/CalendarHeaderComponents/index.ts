@@ -1,2 +1,6 @@
-import { CalendarHeaderContainer, Arrow } from "./CalendarHeaderComponents";
-export { CalendarHeaderContainer, Arrow };
+import {
+  CalendarHeaderContainer,
+  Arrow,
+  DatePicker,
+} from "./CalendarHeaderComponents";
+export { CalendarHeaderContainer, Arrow, DatePicker };
