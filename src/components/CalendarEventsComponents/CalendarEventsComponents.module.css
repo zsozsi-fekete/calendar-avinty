@@ -1,6 +1,6 @@
 .Container {
   display: flex;
-  width: 96%;
+  width: 100%;
   grid-column: 2;
   position: absolute;
   gap: 1px;
@@ -17,6 +17,11 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+}
+
+.Event:hover {
+  background: #9088fc;
+  z-index: 1;
 }
 
 .Time {

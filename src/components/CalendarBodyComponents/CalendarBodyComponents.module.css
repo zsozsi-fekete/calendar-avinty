@@ -14,6 +14,15 @@
   overflow-y: auto;
 }
 
+.Container::-webkit-scrollbar {
+  display: none;
+}
+
+.Container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .Hour {
   width: 100%;
   grid-column: 1;
