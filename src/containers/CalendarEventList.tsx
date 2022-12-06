@@ -11,8 +11,10 @@ import {
 } from "../utils/helpers";
 import dayjs from "dayjs";
 import { CalendarEventWrapper } from "./CalendarEventWrapper";
-import CalendarEvent from "../components/CalendarEvent";
-import CalendarEventsContainer from "../components/CalendarEventsContainer";
+import {
+  CalendarEvent,
+  CalendarEventsContainer,
+} from "../components/CalendarEventsComponents";
 
 export function CalendarEventList() {
   const { date, setDate } = useContext(DateContext);

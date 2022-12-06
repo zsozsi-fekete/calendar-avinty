@@ -1,8 +1,0 @@
-.Container {
-  display: flex;
-  width: 96%;
-  grid-column: 2;
-  position: absolute;
-  gap: 1px;
-  justify-self: flex-start;
-}

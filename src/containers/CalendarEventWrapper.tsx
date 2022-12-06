@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import CalendarEvent from "../components/CalendarEvent";
+import { CalendarEvent } from "../components/CalendarEventsComponents";
 import { Event } from "../shared/types";
 import { positiveOrZero } from "../utils/helpers";
 
