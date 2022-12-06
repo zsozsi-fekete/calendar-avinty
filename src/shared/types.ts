@@ -11,3 +11,8 @@ export interface Event {
 export interface SeedData {
   events: Event[];
 }
+
+export enum Direction {
+  Left = "left",
+  Right = "right",
+}

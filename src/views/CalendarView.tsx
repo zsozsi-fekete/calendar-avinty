@@ -1,10 +1,10 @@
 import {
   CalendarViewContainer,
   CalendarViewHeader,
-} from "../components/CalendarViewComponents/CalendarViewComponents";
+} from "../components/CalendarViewComponents";
 import Card from "../components/Card";
 import CalendarBody from "../containers/CalendarBody";
-import CalendarHeader from "../containers/CalendarHeader";
+import { CalendarHeader } from "../containers/CalendarHeader";
 import { DateProvider } from "../providers/DateProvider";
 
 export function CalendarView({
