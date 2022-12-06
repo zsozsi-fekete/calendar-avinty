@@ -19,13 +19,15 @@ export function CalendarEvent({
   title,
   description,
   style,
+  onClick,
 }: {
   title: string;
   description: string;
   style: React.CSSProperties;
+  onClick: () => void;
 }) {
   return (
-    <div className={styles.Event} style={style}>
+    <div className={styles.Event} style={style} onClick={onClick}>
       <span className={styles.Time}>{title}</span>
       <span className={styles.Title}>{description}</span>
     </div>

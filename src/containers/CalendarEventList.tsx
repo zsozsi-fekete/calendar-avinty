@@ -10,11 +10,11 @@ import {
   startsOrEndsOnDate,
 } from "../utils/helpers";
 import dayjs from "dayjs";
-import { CalendarEventWrapper } from "./CalendarEventWrapper";
 import {
-  CalendarEvent,
-  CalendarEventsContainer,
-} from "../components/CalendarEventsComponents";
+  CalendarEventWrapper,
+  CalendarRestWrapper,
+} from "./CalendarEventWrapper";
+import { CalendarEventsContainer } from "../components/CalendarEventsComponents";
 
 export function CalendarEventList() {
   const { date, setDate } = useContext(DateContext);
@@ -47,6 +47,7 @@ export function CalendarEventList() {
         const startOffset = startDate.diff(date?.startOf("day"), "minutes");
         return (
           <CalendarEventsContainer
+            key={first.id}
             style={{ top: `${positiveOrZero(startOffset)}px` }}
           >
             <CalendarEventWrapper event={first} selectedDate={startDate} />
@@ -56,13 +57,7 @@ export function CalendarEventList() {
             {third && (
               <CalendarEventWrapper event={third} selectedDate={startDate} />
             )}
-            {rest.length > 0 && (
-              <CalendarEvent
-                style={{ flex: "unset", height: "20px", padding: "0px 2px" }}
-                title={`+ ${rest.length}`}
-                description=""
-              />
-            )}
+            {rest.length > 0 && <CalendarRestWrapper rest={rest} />}
           </CalendarEventsContainer>
         );
       })}

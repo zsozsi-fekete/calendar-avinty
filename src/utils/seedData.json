@@ -236,6 +236,14 @@
         "location": "Berlin"
       },
       {
+        "id": 291,
+        "start": "2021-07-26T10:00:00",
+        "end": "2021-07-26T10:30:00",
+        "title": "Ad quorum et cognitionem et usum.",
+        "color": "support4",
+        "location": "Berlin"
+      },
+      {
         "id": 30,
         "start": "2021-07-26T10:30:00",
         "end": "2021-07-26T11:30:00",

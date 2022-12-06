@@ -1,0 +1,12 @@
+.Container {
+  display: grid;
+  width: 500px;
+  background: white;
+  border: 1px solid #2d3436;
+  border-radius: 8px;
+}
+
+.EventDetails {
+  display: flex;
+  flex-direction: column;
+}
