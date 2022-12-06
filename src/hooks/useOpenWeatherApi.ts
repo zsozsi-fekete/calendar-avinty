@@ -41,6 +41,5 @@ export function useOpenWeatherApi(startDate: string, location?: string) {
     loading,
     data,
     error,
-    apiType,
   };
 }

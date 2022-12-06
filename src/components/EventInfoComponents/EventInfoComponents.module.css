@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr;
   width: 500px;
   background: white;
-  border: 1px solid #2d3436;
   border-radius: 8px;
 }
 
@@ -57,6 +56,6 @@
   grid-row: 2;
 }
 
-.NoticeWarning {
+.Error {
   color: red;
 }

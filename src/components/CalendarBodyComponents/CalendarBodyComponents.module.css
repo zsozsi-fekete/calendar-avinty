@@ -9,7 +9,6 @@
   height: 100%;
   background: white;
   position: relative;
-  border: 1px solid #2d3436;
   border-radius: 8px;
   overflow-y: auto;
 }

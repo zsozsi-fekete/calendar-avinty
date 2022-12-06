@@ -61,9 +61,9 @@ export function getApiType(startDate: string) {
   return ApiTypes.Weather;
 }
 
-export function getWeatherData(data: WeatherForecastData, startDate: string) {
+export function getWeatherData(list: WeatherForecast[], startDate: string) {
   const eventDay = dayjs(startDate);
-  return data?.list.reduce((acc, curr, i) => {
+  return list?.reduce((acc, curr, i) => {
     if (i === 0) return curr;
     if (
       Math.abs(eventDay.diff(curr.dt_txt)) < Math.abs(eventDay.diff(acc.dt_txt))

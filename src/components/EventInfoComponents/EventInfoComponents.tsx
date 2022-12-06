@@ -42,9 +42,17 @@ export function EventWeatherNotice({
 }) {
   return isTodaysWeatherData ? (
     <span
-      className={`${styles.Notice} ${styles.NoticeWarning}`}
+      className={`${styles.Notice} ${styles.Error}`}
     >{`Displaying weather info for ${date}!`}</span>
   ) : (
     <span className={styles.Notice}>{`Weather info on ${date}`}</span>
+  );
+}
+
+export function EventWeatherError({ error }: { error: Response }) {
+  return (
+    <div
+      className={styles.Error}
+    >{`${error.status}: ${error.statusText}!`}</div>
   );
 }
