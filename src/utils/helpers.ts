@@ -1,5 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Event } from "../shared/types";
+import {
+  ApiTypes,
+  Event,
+  WeatherForecast,
+  WeatherForecastData,
+} from "../shared/types";
 
 export function startsOrEndsOnDate(date: Dayjs, ev: Event) {
   return date?.isSame(ev.start, "day") || date?.isSame(ev.end, "day");
@@ -44,4 +49,26 @@ export function groupOverlappingEvents(acc: Event[][], curr: Event) {
 
 export function positiveOrZero(num: number) {
   return num < 0 ? 0 : num;
+}
+
+export function isInTheNextFiveDays(startDate: string) {
+  const today = dayjs();
+  return today.isBefore(startDate) && today.diff(startDate, "days") < 5;
+}
+
+export function getApiType(startDate: string) {
+  if (isInTheNextFiveDays(startDate)) return ApiTypes.Forecast;
+  return ApiTypes.Weather;
+}
+
+export function getWeatherData(data: WeatherForecastData, startDate: string) {
+  const eventDay = dayjs(startDate);
+  return data?.list.reduce((acc, curr, i) => {
+    if (i === 0) return curr;
+    if (
+      Math.abs(eventDay.diff(curr.dt_txt)) < Math.abs(eventDay.diff(acc.dt_txt))
+    )
+      return curr;
+    return acc;
+  }, {} as WeatherForecast);
 }

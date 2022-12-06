@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { WeatherData } from "../../shared/types";
 import styles from "./EventInfoComponents.module.css";
 
 export function EventInfoContainer({ children }: { children: ReactNode }) {
@@ -14,11 +15,36 @@ export function EventDetails({ title, time }: { title: string; time: string }) {
   );
 }
 
-export function EventWeatherDetails() {
+export function EventWeatherDetails({
+  weatherData,
+}: {
+  weatherData: WeatherData;
+}) {
   return (
-    <div className={styles.EventDetails}>
-      <span className={styles.Time}>{}</span>
-      <span className={styles.Title}>{}</span>
+    <div className={styles.WeatherDetails}>
+      <img
+        className={styles.Image}
+        alt="Weather icon"
+        src={` http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+      />
+      <span className={styles.Temp}>{`${weatherData.main.temp}°C`}</span>
+      <span className={styles.Main}>{weatherData.weather[0].main}</span>
     </div>
+  );
+}
+
+export function EventWeatherNotice({
+  date,
+  isTodaysWeatherData,
+}: {
+  date: string;
+  isTodaysWeatherData: boolean;
+}) {
+  return isTodaysWeatherData ? (
+    <span
+      className={`${styles.Notice} ${styles.NoticeWarning}`}
+    >{`Displaying weather info for ${date}!`}</span>
+  ) : (
+    <span className={styles.Notice}>{`Weather info on ${date}`}</span>
   );
 }

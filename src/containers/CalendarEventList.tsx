@@ -37,7 +37,6 @@ export function CalendarEventList() {
   //     }
   //   }, [date]);
 
-  console.log(groupedEvents);
   return (
     <>
       {groupedEvents.map((group) => {

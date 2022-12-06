@@ -256,6 +256,14 @@
         "start": "2021-07-26T11:30:00",
         "end": "2021-07-26T11:45:00",
         "color": "support6"
+      },
+      {
+        "id": 32,
+        "start": "2022-12-08T10:30:00",
+        "end": "2022-12-08T11:30:00",
+        "title": "Test for future forcast",
+        "color": "support5",
+        "location": "Amsterdam"
       }
     ]
   }
