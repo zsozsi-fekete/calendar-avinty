@@ -9,7 +9,7 @@ export const DateContext = createContext(
 );
 
 export const DateProvider = ({ children }: { children: ReactNode }) => {
-  const [date, setDate] = useState<Dayjs | null>(dayjs("2022-12-08"));
+  const [date, setDate] = useState<Dayjs | null>(dayjs().startOf("day"));
 
   const value = {
     date,

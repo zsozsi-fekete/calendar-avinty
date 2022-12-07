@@ -10,12 +10,7 @@ import {
 } from "../components/EventInfoComponents/EventInfoComponents";
 import { useOpenWeatherApi } from "../hooks/useOpenWeatherApi";
 
-import {
-  ApiTypes,
-  Event,
-  WeatherData,
-  WeatherForecastData,
-} from "../shared/types";
+import { Event, WeatherData, WeatherForecastData } from "../shared/types";
 import { getWeatherData, isInTheNextFiveDays } from "../utils/helpers";
 
 export function EventDetailsWrapper({ event }: { event: Event }) {
@@ -25,10 +20,6 @@ export function EventDetailsWrapper({ event }: { event: Event }) {
     event.start,
     event.location
   );
-
-  if (error) {
-    return <EventWeatherError error={error} />;
-  }
 
   const isTodaysWeatherData = !isInTheNextFiveDays(event.start);
   const weatherData = isTodaysWeatherData
@@ -41,14 +32,20 @@ export function EventDetailsWrapper({ event }: { event: Event }) {
         title={event.title}
         time={`${startDate.format("HH:mm")} - ${endDate.format("HH:mm")}`}
       />
-      {weatherData && (
-        <>
-          <EventWeatherNotice
-            date={startDate.format("YYYY-MM-DD")}
-            isTodaysWeatherData={isTodaysWeatherData}
-          />
-          <EventWeatherDetails weatherData={weatherData} />
-        </>
+      {error ? (
+        <EventWeatherError error={error} />
+      ) : (
+        weatherData && (
+          <>
+            <EventWeatherNotice
+              date={(isTodaysWeatherData ? dayjs() : startDate).format(
+                "YYYY-MM-DD"
+              )}
+              isTodaysWeatherData={isTodaysWeatherData}
+            />
+            <EventWeatherDetails weatherData={weatherData} />
+          </>
+        )
       )}
     </EventInfoContainer>
   );

@@ -9,7 +9,11 @@ export function CalendarEventsContainer({
   style: CSSProperties;
 }) {
   return (
-    <div className={styles.Container} style={style}>
+    <div
+      data-testid="calendar-event-container"
+      className={styles.Container}
+      style={style}
+    >
       {children}
     </div>
   );
@@ -27,7 +31,12 @@ export function CalendarEvent({
   onClick: () => void;
 }) {
   return (
-    <div className={styles.Event} style={style} onClick={onClick}>
+    <div
+      data-testid="calendar-event"
+      className={styles.Event}
+      style={style}
+      onClick={onClick}
+    >
       <span className={styles.Time}>{title}</span>
       <span className={styles.Title}>{description}</span>
     </div>

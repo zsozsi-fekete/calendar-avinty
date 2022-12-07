@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function useFetch<T>() {
   const [data, setData] = useState<T>();

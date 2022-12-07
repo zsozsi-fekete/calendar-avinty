@@ -1,10 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import {
-  ApiTypes,
-  Event,
-  WeatherForecast,
-  WeatherForecastData,
-} from "../shared/types";
+import { ApiTypes, Event, WeatherForecast } from "../shared/types";
 
 export function startsOrEndsOnDate(date: Dayjs, ev: Event) {
   return date?.isSame(ev.start, "day") || date?.isSame(ev.end, "day");
@@ -71,4 +66,23 @@ export function getWeatherData(list: WeatherForecast[], startDate: string) {
       return curr;
     return acc;
   }, {} as WeatherForecast);
+}
+
+export function getEndOffset(
+  startDate: Dayjs,
+  endDate: Dayjs,
+  currentDate: Dayjs
+) {
+  if (endDate.isSame(startDate, "day")) {
+    return endDate.diff(startDate, "minutes");
+  }
+  if (startDate.isSame(currentDate, "day")) {
+    return startDate.endOf("day").diff(startDate, "minutes");
+  }
+  return endDate.diff(currentDate.startOf("day"), "minutes");
+}
+
+export function getCorrectStartDate(startDate: Dayjs, currentDate: Dayjs) {
+  if (currentDate.isSame(startDate, "day")) return startDate;
+  return currentDate;
 }

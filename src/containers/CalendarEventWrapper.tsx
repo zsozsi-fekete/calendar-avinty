@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CalendarEvent } from "../components/CalendarEventsComponents";
 import { EventsContext } from "../providers/EventsProvider";
 import { Event } from "../shared/types";
-import { positiveOrZero } from "../utils/helpers";
+import { getEndOffset, positiveOrZero } from "../utils/helpers";
 
 export function CalendarEventWrapper({
   event,
@@ -16,10 +16,7 @@ export function CalendarEventWrapper({
   const startDate = dayjs(event.start);
   const endDate = dayjs(event.end);
   const startOffset = startDate.diff(selectedDate, "minutes");
-  const isSameDay = endDate.isSame(startDate, "day");
-  const endOffset = isSameDay
-    ? endDate.diff(startDate, "minutes")
-    : startDate.endOf("day").diff(startDate, "minutes");
+  const endOffset = getEndOffset(startDate, endDate, selectedDate);
 
   const title = `${startDate.format("HH:mm")} - ${endDate.format("HH:mm")}`;
   const description = event.title;

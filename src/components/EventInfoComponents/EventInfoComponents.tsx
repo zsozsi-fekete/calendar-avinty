@@ -53,6 +53,6 @@ export function EventWeatherError({ error }: { error: Response }) {
   return (
     <div
       className={styles.Error}
-    >{`${error.status}: ${error.statusText}!`}</div>
+    >{`Error ${error.status}: ${error.statusText}!`}</div>
   );
 }

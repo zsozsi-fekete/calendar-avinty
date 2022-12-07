@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import { DateContext } from "../providers/DateProvider";
 import { Event } from "../shared/types";
 import {
+  getCorrectStartDate,
   groupOverlappingEvents,
   positiveOrZero,
   sortEventsAscending,
@@ -24,25 +25,25 @@ export function CalendarEventList() {
     .sort(sortEventsAscending)
     .reduce(groupOverlappingEvents, [] as Event[][]);
 
-  //   useEffect(() => {
-  //     if (groupedEvents.length === 0 && date) {
-  //       const sortedEvents = events.sort((a, b) => {
-  //         const diffA = Math.abs(date.diff(a.start, "days"));
-  //         const diffB = Math.abs(date.diff(b.start, "days"));
-  //         return diffA - diffB;
-  //       });
-  //       if (sortedEvents.length !== 0) {
-  //         setDate(dayjs(sortedEvents[0].start));
-  //       }
-  //     }
-  //   }, [date]);
+  useEffect(() => {
+    if (groupedEvents.length === 0 && date) {
+      const sortedEvents = events.sort((a, b) => {
+        const diffA = Math.abs(date.diff(a.start, "days"));
+        const diffB = Math.abs(date.diff(b.start, "days"));
+        return diffA - diffB;
+      });
+      if (sortedEvents.length !== 0) {
+        setDate(dayjs(sortedEvents[0].start).startOf("day"));
+      }
+    }
+  }, [date]);
 
   return (
     <>
       {groupedEvents.map((group) => {
         const [first, second, third, ...rest] = group;
 
-        const startDate = dayjs(first.start);
+        const startDate = getCorrectStartDate(dayjs(first.start), date!);
         const startOffset = startDate.diff(date?.startOf("day"), "minutes");
         return (
           <CalendarEventsContainer

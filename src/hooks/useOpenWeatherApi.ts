@@ -16,7 +16,6 @@ export function useOpenWeatherApi(startDate: string, location?: string) {
     const lat = pos.coords.latitude.toString();
     const lon = pos.coords.longitude.toString();
     let url = `https://api.openweathermap.org/data/2.5/${apiType}?lat=${lat}&lon=${lon}&appid=${storedValue}&units=metric`;
-    console.log(url);
 
     startFetch(url);
   };
@@ -27,7 +26,7 @@ export function useOpenWeatherApi(startDate: string, location?: string) {
     if (!storedValue) return;
     if (location) {
       let url = `https://api.openweathermap.org/data/2.5/${apiType}?q=${location}&appid=${storedValue}&units=metric`;
-      console.log(url);
+
       startFetch(url);
     } else {
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
