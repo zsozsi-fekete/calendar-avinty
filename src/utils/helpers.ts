@@ -48,7 +48,7 @@ export function positiveOrZero(num: number) {
 
 export function isInTheNextFiveDays(startDate: string) {
   const today = dayjs();
-  return today.isBefore(startDate) && today.diff(startDate, "days") < 5;
+  return today.isBefore(startDate) && dayjs(startDate).diff(today, "days") < 5;
 }
 
 export function getApiType(startDate: string) {
