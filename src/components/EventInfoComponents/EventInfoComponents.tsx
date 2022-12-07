@@ -6,10 +6,19 @@ export function EventInfoContainer({ children }: { children: ReactNode }) {
   return <div className={styles.Container}>{children}</div>;
 }
 
-export function EventDetails({ title, time }: { title: string; time: string }) {
+export function EventDetails({
+  title,
+  time,
+  location,
+}: {
+  title: string;
+  time: string;
+  location: string;
+}) {
   return (
     <div className={styles.EventDetails}>
       <span className={styles.Time}>{time}</span>
+      <span className={styles.Title}>{location}</span>
       <span className={styles.Title}>{title}</span>
     </div>
   );

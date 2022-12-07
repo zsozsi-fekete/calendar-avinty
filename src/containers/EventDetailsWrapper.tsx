@@ -30,6 +30,7 @@ export function EventDetailsWrapper({ event }: { event: Event }) {
     <EventInfoContainer key={event.id}>
       <EventDetails
         title={event.title}
+        location={event.location || ""}
         time={`${startDate.format("HH:mm")} - ${endDate.format("HH:mm")}`}
       />
       {error ? (
