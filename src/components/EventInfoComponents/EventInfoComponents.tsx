@@ -36,7 +36,9 @@ export function EventWeatherDetails({
         alt="Weather icon"
         src={` http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
       />
-      <span className={styles.Temp}>{`${weatherData.main.temp}°C`}</span>
+      <span className={styles.Temp}>{`${Math.round(
+        weatherData.main.temp
+      )}°C`}</span>
       <span className={styles.Main}>{weatherData.weather[0].main}</span>
     </div>
   );
