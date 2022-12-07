@@ -17,6 +17,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .Event:hover {
