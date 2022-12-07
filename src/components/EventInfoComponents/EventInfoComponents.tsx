@@ -46,17 +46,20 @@ export function EventWeatherDetails({
 
 export function EventWeatherNotice({
   date,
+  location,
   isTodaysWeatherData,
 }: {
   date: string;
+  location: string | undefined;
   isTodaysWeatherData: boolean;
 }) {
-  return isTodaysWeatherData ? (
-    <span
-      className={`${styles.Notice} ${styles.Error}`}
-    >{`Displaying weather info for ${date}!`}</span>
-  ) : (
-    <span className={styles.Notice}>{`Weather info on ${date}`}</span>
+  const classNames = isTodaysWeatherData
+    ? `${styles.Notice} ${styles.Error}`
+    : styles.Notice;
+  return (
+    <span className={classNames}>{`Weather in ${
+      location || "your location"
+    } on ${date}!`}</span>
   );
 }
 

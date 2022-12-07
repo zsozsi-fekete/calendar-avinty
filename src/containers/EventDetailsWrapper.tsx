@@ -42,6 +42,7 @@ export function EventDetailsWrapper({ event }: { event: Event }) {
               date={(isTodaysWeatherData ? dayjs() : startDate).format(
                 "YYYY-MM-DD"
               )}
+              location={event.location}
               isTodaysWeatherData={isTodaysWeatherData}
             />
             <EventWeatherDetails weatherData={weatherData} />
