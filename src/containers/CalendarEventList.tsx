@@ -36,7 +36,7 @@ export function CalendarEventList() {
         setDate(dayjs(sortedEvents[0].start).startOf("day"));
       }
     }
-  }, [date]);
+  }, []);
 
   return (
     <>
